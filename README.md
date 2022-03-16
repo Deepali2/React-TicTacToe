@@ -1,3 +1,13 @@
+
+### TODO with more time:
+* add a line to show the winning tic tac toe
+* add buttons to show and hide the board history and update the styling
+* add unit tests
+* add a database to store the game results
+* add a point system for winning games with virtual prizes for incentives
+* add levels to the game
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +78,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
