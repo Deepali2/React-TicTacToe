@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
-import Moves from './Moves';
+// import Moves from './Moves';
 
 const TicTacToeGame = () => {
   // states
+  const initialState = [{ squares: Array.from({ length: 9 }, () => null) }];
   const [step, setStep] = useState(0) // keeps track of where we are in the game
-  const [history, setHistory] = useState([{ squares: Array.from({ length: 9 }, () => null) }]); // set the initial state of the board to null values
+  const [history, setHistory] = useState(initialState); // set the initial state of the board to null values
   const [xIsNext, setXIsNext] = useState(true); // keeps track of whose turn it is: X or O. Assuming here that O goes first (so odd moves) and X goes on even moves
   const [status, setStatus] = useState(''); // tracks the status of the game: ongoing, draw, winner
+  const [showPlayAgain, setShowPlayAgain] = useState(false);
+  // const [showHistory, setShowHistory] = useState(false);
 
   //functions
   const handleClick = (i) => {
@@ -54,14 +57,30 @@ const TicTacToeGame = () => {
     return true;
   }
 
+  const reset = () => {
+    setStep(0);
+    setHistory(initialState);
+    setXIsNext(true);
+    setStatus('');
+    setShowPlayAgain(false);
+    setShowHistory(false);
+  }
+
+  const handlePlayAgain = () => {
+    reset();
+    setShowPlayAgain(false)
+  }
+
   useEffect(
     () => {
       const winner = calculateWinner(history[step].squares);
       const draw = checkDraw(history[step].squares);
 
-      if (winner) setStatus(`Winner: ${winner}`);
-      else if (draw) setStatus(`It is a draw`);
-      else setStatus(`Next player: ${xIsNext ? 'X' : 'O'}`)
+      if (winner || draw) {
+        if (winner) setStatus(`Winner: ${winner}`);
+        if (draw) setStatus(`It is a draw`);
+        setShowPlayAgain(true);
+      } else setStatus(`Next player: ${xIsNext ? 'X' : 'O'}`)
     }, [setStatus, xIsNext, step]
   )
 
@@ -71,10 +90,16 @@ const TicTacToeGame = () => {
       <h1 className="heading">tic tac toe</h1>
       <div className="game">
         <Board squares={history[history.length - 1].squares} handleClick={(i) => handleClick(i)} />
+        {/* TODO: Modify CSS to show and hide the board history */}
+        {/* {showHistory && (<Moves setStep={setStep} setXIsNext={setXIsNext} history={history} />)}
+        <button onClick={() => setShowHistory(true)} className="showHistory">Show History</button>
+        <button onClick={() => setShowHistory(false)} className="hideHistory">Hide History</button> */}
       </div>
       <div className="game-info">
         <h1 className="status">{status}</h1>
-        {/* <Moves setStep={setStep} setXIsNext={setXIsNext} history={history} /> */}
+        {showPlayAgain && (
+          <button onClick={handlePlayAgain} className="playAgain">Play Again</button>
+        )}
       </div>
     </div>
   )

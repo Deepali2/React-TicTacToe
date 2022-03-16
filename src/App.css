@@ -23,7 +23,10 @@ html {
 }
 
 .game-info {
-  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .heading {
@@ -36,7 +39,19 @@ html {
 .status {
   font-size: "3rem";
   color: #585858;
-  text-align: center;
+  /* text-align: center; */
+}
+
+.playAgain {
+  font-size: "30rem";
+  color: #585858;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 15px 32px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 10px;
 }
 
 .square {
