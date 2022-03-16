@@ -7,7 +7,7 @@ const TicTacToeGame = () => {
   const initialState = [{ squares: Array.from({ length: 9 }, () => null) }];
   const [step, setStep] = useState(0) // keeps track of where we are in the game
   const [history, setHistory] = useState(initialState); // set the initial state of the board to null values
-  const [xIsNext, setXIsNext] = useState(true); // keeps track of whose turn it is: X or O. Assuming here that O goes first (so odd moves) and X goes on even moves
+  const [xIsNext, setXIsNext] = useState(true); // keeps track of whose turn it is: X or O
   const [status, setStatus] = useState(''); // tracks the status of the game: ongoing, draw, winner
   const [showPlayAgain, setShowPlayAgain] = useState(false);
   // const [showHistory, setShowHistory] = useState(false);
