@@ -63,7 +63,7 @@ const TicTacToeGame = () => {
     setXIsNext(true);
     setStatus('');
     setShowPlayAgain(false);
-    setShowHistory(false);
+    // setShowHistory(false);
   }
 
   const handlePlayAgain = () => {

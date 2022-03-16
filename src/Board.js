@@ -3,9 +3,7 @@ import Square from './Square';
 
 
 const Board = ({ squares, handleClick }) => {
-  console.log('squares', squares)
   const renderSquare = (i) => {
-    console.log('squaresDee', squares[i])
     return (< Square value={squares[i]} handleClick={() => handleClick(i)} />)
   }
 
